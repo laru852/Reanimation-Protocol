@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Background
+  - Props
+  - Player
   - 
   - 
   - 
@@ -38,14 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Platforms
+    uniqueID: 3427363385
+    locked: 0
   - name: Background
     uniqueID: 1095035351
     locked: 0
   - name: Props
     uniqueID: 2467945645
-    locked: 0
-  - name: Platforms
-    uniqueID: 3427363385
     locked: 0
   - name: Default
     uniqueID: 0
