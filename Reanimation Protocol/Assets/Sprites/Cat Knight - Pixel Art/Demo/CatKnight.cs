@@ -7,7 +7,8 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
 
-    private Animator            m_animator;
+
+    public Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
@@ -133,4 +134,5 @@ public class CatKnight : MonoBehaviour {
     {
         m_rolling = false;
     }
+
 }

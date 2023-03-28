@@ -10379,10 +10379,39 @@ Transform:
   - {fileID: 445908371}
   - {fileID: 104535462}
   - {fileID: 118249009}
-  - {fileID: 1496749209}
-  - {fileID: 1472282399}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &694119322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 694119323}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &694119323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694119322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.72, y: 0.76, z: -4.333809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1390845448}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811733888
 GameObject:
@@ -10398,7 +10427,8 @@ GameObject:
   - component: {fileID: 811733891}
   - component: {fileID: 811733890}
   - component: {fileID: 811733894}
-  m_Layer: 0
+  - component: {fileID: 811733895}
+  m_Layer: 9
   m_Name: Skelington
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10479,7 +10509,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.18, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10502,7 +10532,7 @@ Animator:
   m_GameObject: {fileID: 811733888}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7052c8b4bb06f644ea75e62b72afedbd, type: 2}
+  m_Controller: {fileID: 9100000, guid: cfc5aa92e7f78814e948b4c6ff53f715, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10576,6 +10606,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2093e4a11a6f34ca945e60c40f02c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &811733895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811733888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2e193c3b10f204d897e793fcf0c782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &859614494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10588,6 +10631,10 @@ PrefabInstance:
       propertyPath: m_speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 658861763642565726, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+      propertyPath: m_animator
+      value: 
+      objectReference: {fileID: 1390845452}
     - target: {fileID: 658861763642565726, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
       propertyPath: m_rollForce
       value: 10
@@ -10652,15 +10699,30 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5646550415717040819, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 274fea9a240b50544baf06b57eeb3ccf, type: 2}
     - target: {fileID: 7315368887357307782, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
       propertyPath: m_Name
       value: CatKnight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5081723055544956881, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 694119323}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7315368887357307782, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1390845454}
   m_SourcePrefab: {fileID: 100100000, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+--- !u!1 &877361478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7315368887357307782, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+  m_PrefabInstance: {fileID: 859614494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915065303
 GameObject:
   m_ObjectHideFlags: 0
@@ -10738,6 +10800,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5081723055544956881, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
   m_PrefabInstance: {fileID: 859614494}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1390845452 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1629471000633155361, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+  m_PrefabInstance: {fileID: 859614494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1390845454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877361478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c852361d360c1b48b3d64df8e0e47cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1390845452}
+  attackPoint: {fileID: 694119323}
+  attackRange: 0.56
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  attackDamge: 40
 --- !u!1 &1411602074
 GameObject:
   m_ObjectHideFlags: 0
@@ -10897,8 +10983,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 811733889}
-  m_Father: {fileID: 502046476}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1472282400
 CircleCollider2D:
@@ -10996,8 +11082,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2126274667}
-  m_Father: {fileID: 502046476}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1496749210
 MonoBehaviour:
