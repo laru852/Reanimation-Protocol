@@ -27,12 +27,16 @@ public class Hit : MonoBehaviour
     }
     void Attack()
     {
-        animator.SetTrigger("Attack");
+        //animator.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
-        foreach(Collider2D enemy in hitEnemies)
+        foreach(Collider2D enemyCollider in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamge);
+            var enemy = enemyCollider.GetComponent<Enemy>();
+            if(enemy != null)
+            {
+                 enemy.TakeDamage(attackDamge);
+            }
         }
     }
     private void OnDrawGizmosSelected() 

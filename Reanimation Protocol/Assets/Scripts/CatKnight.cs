@@ -53,14 +53,16 @@ public class CatKnight : MonoBehaviour {
         // Swap direction of sprite depending on walk direction
         if (inputX > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            //GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+            transform.localScale = new Vector2(1,1);
         }
             
         else if (inputX < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            //GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+            transform.localScale = new Vector2(-1, 1);
         }
 
         // Move
