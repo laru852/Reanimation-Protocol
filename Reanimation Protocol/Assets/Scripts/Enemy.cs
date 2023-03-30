@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
@@ -32,7 +33,10 @@ public class Enemy : MonoBehaviour
 
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
-        FindObjectOfType<A*>().enabled = false;
-
+        //FindObjectOfType<AIPath>().enabled = false;
+        GetComponentInParent<CircleCollider2D>().enabled = false;
+         GetComponentInParent<AIPath>().enabled = false; 
+        //FindObjectOfType<A*>().enabled = false;
+        
     }
 }
