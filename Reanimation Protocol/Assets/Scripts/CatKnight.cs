@@ -6,12 +6,13 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
-
+    [SerializeField] private int maxJumps = 2;
 
     public Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
+    private int                 _jumpsLeft;
     private bool                m_rolling = false;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
@@ -25,6 +26,7 @@ public class CatKnight : MonoBehaviour {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_CatKnight>();
+        _jumpsLeft = maxJumps;
     }
 
     // Update is called once per frame
@@ -32,6 +34,12 @@ public class CatKnight : MonoBehaviour {
     {
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
+
+        //Reset number of jumps
+        if(m_grounded && m_body2d.velocity.y <= 0)
+        {
+            _jumpsLeft = maxJumps;
+        }
 
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
@@ -103,8 +111,9 @@ public class CatKnight : MonoBehaviour {
             
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded)
+        else if (Input.GetKeyDown("space") && _jumpsLeft > 0)
         {
+            _jumpsLeft -= 1;
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
