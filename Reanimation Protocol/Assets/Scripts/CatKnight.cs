@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class CatKnight : MonoBehaviour {
 
@@ -18,7 +20,7 @@ public class CatKnight : MonoBehaviour {
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
-
+   
 
     // Use this for initialization
     void Start ()
@@ -145,5 +147,6 @@ public class CatKnight : MonoBehaviour {
     {
         m_rolling = false;
     }
-
+    // Take damage
+   
 }

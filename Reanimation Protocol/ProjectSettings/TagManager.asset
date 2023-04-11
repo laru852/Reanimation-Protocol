@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Platforms
     uniqueID: 3427363385
     locked: 0
@@ -47,9 +50,9 @@ TagManager:
   - name: Props
     uniqueID: 2467945645
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Enemies
     uniqueID: 3765616505
+    locked: 0
+  - name: Player
+    uniqueID: 125989825
     locked: 0
