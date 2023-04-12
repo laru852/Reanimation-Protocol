@@ -27,7 +27,9 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         if (seeker.IsDone())
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
     }
 
     void OnPathComplete(Path p)
@@ -47,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         if(currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndofPath = true;
-            return;
+            //return;
         }
         else
         {
