@@ -10,7 +10,8 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] private int maxJumps = 2;
 
-    public Animator            m_animator;
+    
+    public Animator             m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
@@ -22,6 +23,7 @@ public class CatKnight : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
    
 
+
     // Use this for initialization
     void Start ()
     {
@@ -32,7 +34,7 @@ public class CatKnight : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+        void Update ()
     {
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
@@ -84,7 +86,7 @@ public class CatKnight : MonoBehaviour {
 
         // -- Handle Animations --
         //Attack
-        if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.2f)
+        if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.3f)
         {
             m_currentAttack++;
 
@@ -99,9 +101,11 @@ public class CatKnight : MonoBehaviour {
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
 
+
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
+        
 
         // Roll
         else if (Input.GetKeyDown("left shift") && !m_rolling)
@@ -138,6 +142,7 @@ public class CatKnight : MonoBehaviour {
             m_delayToIdle -= Time.deltaTime;
                 if(m_delayToIdle < 0)
                     m_animator.SetInteger("AnimState", 0);
+
         }
     }
 
@@ -149,4 +154,14 @@ public class CatKnight : MonoBehaviour {
     }
     // Take damage
    
+    void freezeMove()
+    {
+        m_body2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+    } 
+
+    void canMove()
+    {
+        m_body2d.constraints = RigidbodyConstraints2D.None;
+        m_body2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }

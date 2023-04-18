@@ -174,7 +174,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             target = rightLimit;
         }
-        //Flip();
+        Flip();
     }
     private void Flip()
     {

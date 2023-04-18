@@ -27,10 +27,7 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Debug.Log("Enemy Died!");
-
         animator.SetBool("IsDead", true);
-
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
         //FindObjectOfType<AIPath>().enabled = false;
