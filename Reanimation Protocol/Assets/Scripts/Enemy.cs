@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public Animator animator;
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +30,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("IsDead", true);
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
-        //FindObjectOfType<AIPath>().enabled = false;
-        GetComponentInParent<CircleCollider2D>().enabled = false;
-         GetComponentInParent<AIPath>().enabled = false; 
-        //FindObjectOfType<A*>().enabled = false;
+        //GetComponentInParent<CircleCollider2D>().enabled = false;
         
     }
 }

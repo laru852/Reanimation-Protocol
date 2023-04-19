@@ -49,7 +49,7 @@ public class EnemyBehavior : MonoBehaviour
             RaycastDebugger();
         }
 
-        if(!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack"))
+        if(!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             SelectTarget();
         }
@@ -77,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             target = trig.transform;
             inRange = true;
-            Flip();
+            //Flip();
         }
     }
 
@@ -104,7 +104,7 @@ public class EnemyBehavior : MonoBehaviour
     void Move()
     {
         anim.SetBool("canWalk", true);
-        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("G_attack"))
+        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
 
@@ -186,8 +186,9 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             rotation.y = 0f;
+            Debug.Log("Rotating");
         }
 
-        transform.eulerAngles = rotation;
+       transform.eulerAngles = rotation;
     }
 }
