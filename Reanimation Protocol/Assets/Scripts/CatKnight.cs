@@ -5,13 +5,25 @@ using System.Collections.Generic;
 
 public class CatKnight : MonoBehaviour {
 
+    #region Serialized Feilds
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] private int maxJumps = 2;
+    [SerializeField] private AudioSource jumpSFX;
+    [SerializeField] private AudioSource rollSFX;
+    [SerializeField] private AudioSource attack1SFX;
+    [SerializeField] private AudioSource attack2SFX;
+    [SerializeField] private AudioSource attack3SFX;
+    [SerializeField] private AudioSource landSFX;
+    [SerializeField] private AudioSource deathSFX;
+    #endregion
 
-    
+    #region Public Values
     public Animator             m_animator;
+    #endregion
+
+    #region Private Values
     private Rigidbody2D         m_body2d;
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
@@ -21,7 +33,7 @@ public class CatKnight : MonoBehaviour {
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
-   
+   #endregion
 
 
     // Use this for initialization
@@ -50,6 +62,7 @@ public class CatKnight : MonoBehaviour {
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
+            landSFX.Play();
         }
 
         //Check if character just started falling
@@ -119,6 +132,7 @@ public class CatKnight : MonoBehaviour {
         //Jump
         else if (Input.GetKeyDown("space") && _jumpsLeft > 0)
         {
+            jumpSFX.Play();
             _jumpsLeft -= 1;
             m_animator.SetTrigger("Jump");
             m_grounded = false;
