@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System;
 
 public class CatKnight : MonoBehaviour {
 
@@ -107,14 +107,26 @@ public class CatKnight : MonoBehaviour {
             if (m_currentAttack > 3)
                 m_currentAttack = 1;
 
+
             // Reset Attack combo if time since last attack is too large
             if (m_timeSinceAttack > 1.0f)
                 m_currentAttack = 1;
 
-            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+            // Call one of three attack animations "Attack1", "Attack2", "Attack3"    
             m_animator.SetTrigger("Attack" + m_currentAttack);
-
-
+            
+            if(m_currentAttack == 1)
+            {
+            attack1SFX.Play();
+            }
+            else if(m_currentAttack == 2)
+            {
+                attack2SFX.Play();
+            }
+            else if(m_currentAttack == 3)
+            {
+                attack3SFX.Play();
+            }
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }

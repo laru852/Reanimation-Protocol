@@ -77,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             target = trig.transform;
             inRange = true;
-            //Flip();
+            Flip();
         }
     }
 
@@ -118,7 +118,8 @@ public class EnemyBehavior : MonoBehaviour
         attackMode = true; //To check if Enemy can still attack or not
 
         anim.SetBool("canWalk", false);
-        anim.SetBool("Attack", true);
+        anim.SetBool("S_attack", true);
+        StopAttack();
     }
 
     void Cooldown()
