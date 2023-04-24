@@ -14,7 +14,9 @@ public class EnemyBehavior : MonoBehaviour
     public float timer;
     public Transform leftLimit;
     public Transform rightLimit;
-
+    public Animator animator;
+    public int maxHealth = 100;
+    public int currentHealth;
     #endregion
 
     #region Private Variables
@@ -118,8 +120,11 @@ public class EnemyBehavior : MonoBehaviour
         attackMode = true; //To check if Enemy can still attack or not
 
         anim.SetBool("canWalk", false);
+        Debug.Log("canWalk is false");
         anim.SetBool("S_attack", true);
+        Debug.Log("S_attack is true");
         StopAttack();
+        Debug.Log("Stopped attack");
     }
 
     void Cooldown()
@@ -138,6 +143,7 @@ public class EnemyBehavior : MonoBehaviour
         cooling = false;
         attackMode = false;
         anim.SetBool("Attack", false);
+        Debug.Log("Attack is false");
     }
     
     void RaycastDebugger()
@@ -187,9 +193,29 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             rotation.y = 0f;
-            Debug.Log("Rotating");
         }
 
        transform.eulerAngles = rotation;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Ouch");
+
+        animator.SetTrigger("Hurt");
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        animator.SetBool("IsDead", true);
+        GetComponentInChildren<BoxCollider2D>().enabled = false;
+        this.enabled = false;
+        //GetComponentInParent<CircleCollider2D>().enabled = false;
+        
     }
 }

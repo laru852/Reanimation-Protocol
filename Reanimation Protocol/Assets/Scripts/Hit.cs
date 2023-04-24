@@ -11,11 +11,6 @@ public class Hit : MonoBehaviour
 
     public int attackDamge = 40;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,7 +27,7 @@ public class Hit : MonoBehaviour
         
         foreach(Collider2D enemyCollider in hitEnemies)
         {
-            var enemy = enemyCollider.GetComponent<Enemy>();
+            var enemy = enemyCollider.GetComponentInChildren<Enemy>();
             if(enemy != null)
             {
                  enemy.TakeDamage(attackDamge);

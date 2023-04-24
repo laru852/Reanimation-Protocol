@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
-public class EnemyHealth : MonoBehaviour
+public class Skeleton : MonoBehaviour
 {
     public Animator animator;
     public int maxHealth = 100;
-    int currentHealth;
-
-
+    public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("Ouch");
 
         animator.SetTrigger("Hurt");
 
@@ -26,12 +25,13 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
-        
     }
-
     void Die()
     {
-        animator.SetBool("Isdead", true);
+        animator.SetBool("IsDead", true);
+        GetComponentInChildren<BoxCollider2D>().enabled = false;
         this.enabled = false;
+        //GetComponentInParent<CircleCollider2D>().enabled = false;
+        
     }
 }
