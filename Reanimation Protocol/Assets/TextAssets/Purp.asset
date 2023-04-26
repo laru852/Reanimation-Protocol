@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: Gold
+  m_Name: Purp
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 1, g: 1, b: 1, a: 1}
-  bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-  bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  topLeft: {r: 0.40931568, g: 0.2921858, b: 0.9245283, a: 1}
+  topRight: {r: 0.4117647, g: 0.29411766, b: 0.9254902, a: 1}
+  bottomLeft: {r: 0.4270787, g: 0.14177644, b: 0.509434, a: 1}
+  bottomRight: {r: 0.42745098, g: 0.14509805, b: 0.50980395, a: 1}
