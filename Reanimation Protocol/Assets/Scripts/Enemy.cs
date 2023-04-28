@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D Rigidbody;
     public Animator animator;
     public int maxHealth = 100;
     public int currentHealth;
@@ -31,9 +32,12 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         this.enabled = false;
-        animator.SetBool("IsDead", true);
-        //GetComponent<BoxCollider2D>().enabled = false;
-        //GetComponentInParent<CircleCollider2D>().enabled = false;
-        
+        animator.SetTrigger("Dead");
+        GetComponent<BoxCollider2D>().enabled = false;
+        Rigidbody.gravityScale = 0;
+        GetComponent<EnemyBehavior>().enabled = false;
+        GetComponentInChildren<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<CircleCollider2D>().enabled = false;
     }
+    
 }
