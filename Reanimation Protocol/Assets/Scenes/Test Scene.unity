@@ -24158,9 +24158,9 @@ GameObject:
   - component: {fileID: 1485368693}
   - component: {fileID: 1485368692}
   - component: {fileID: 1485368691}
+  - component: {fileID: 1485368696}
   - component: {fileID: 1485368689}
   - component: {fileID: 1485368695}
-  - component: {fileID: 1485368696}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Untagged
