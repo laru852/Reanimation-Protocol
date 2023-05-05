@@ -51,7 +51,7 @@ public class EnemyBehavior : MonoBehaviour
             RaycastDebugger();
         }
 
-        if(!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("S_attack"))
+        if(!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             SelectTarget();
         }
@@ -99,7 +99,7 @@ public class EnemyBehavior : MonoBehaviour
         if (cooling)
         {
             Cooldown();
-            anim.SetBool("S_attack", false);
+            anim.SetBool("Attack", false);
         }
     }
 
@@ -120,7 +120,7 @@ public class EnemyBehavior : MonoBehaviour
         attackMode = true; //To check if Enemy can still attack or not
 
         anim.SetBool("canWalk", false);
-        anim.SetBool("S_attack", true);
+        anim.SetBool("Attack", true);
         StopAttack();
     }
 
@@ -139,7 +139,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         cooling = false;
         attackMode = false;
-        anim.SetBool("S_attack", false);
+        anim.SetBool("Attack", false);
     }
     
     void RaycastDebugger()
