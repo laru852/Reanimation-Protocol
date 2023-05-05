@@ -30,6 +30,11 @@ public class EnemyBehavior : MonoBehaviour
     private float intTimer;
     #endregion
     
+    void Start()
+    {
+        GetComponentInChildren<BoxCollider2D>();
+    }
+
     void Awake()
     {
         SelectTarget();
@@ -209,9 +214,10 @@ public class EnemyBehavior : MonoBehaviour
     void Die()
     {
         animator.SetBool("IsDead", true);
-        GetComponentInChildren<BoxCollider2D>().enabled = false;
+        Destroy(gameObject, 2);
         this.enabled = false;
-        //GetComponentInParent<CircleCollider2D>().enabled = false;
-        
+        GetComponentInChildren<BoxCollider2D>().enabled = false; 
+        Destroy(GetComponentInChildren<BoxCollider2D>());
+
     }
 }

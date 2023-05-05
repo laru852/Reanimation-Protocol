@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Dead");
         GetComponent<BoxCollider2D>().enabled = false;
         Rigidbody.gravityScale = 0;
-        //GetComponent<EnemyBehavior>().enabled = false;
+        GetComponent<EnemyBehavior>().enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false;
         GetComponentInChildren<CircleCollider2D>().enabled = false;
     }
