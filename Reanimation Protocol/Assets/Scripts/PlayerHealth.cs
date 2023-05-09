@@ -1,22 +1,30 @@
-
+using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour 
 {
-    public int health;
-    public int maxHealth = 100;
+    public int currentHealth;
+    public int maxHealth = 18;
+    public HealthBar healthbar;
     void start ()
     {
-        health = maxHealth;
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
-
-    public void TakeDamage(int amount)
+    void update()
     {
-        health -= amount;
-        if(health <= 0)
+         if(currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        healthbar.SetHealth(currentHealth);
+       
     } 
 
 }
