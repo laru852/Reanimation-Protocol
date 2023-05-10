@@ -17,6 +17,7 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] private AudioSource attack3SFX;
     [SerializeField] private AudioSource landSFX;
     [SerializeField] private AudioSource deathSFX;
+    [SerializeField] private AudioSource walkSFX;
     #endregion
 
     #region Public Values
@@ -33,6 +34,7 @@ public class CatKnight : MonoBehaviour {
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
+    private bool                isMoving;
    #endregion
 
 
@@ -93,7 +95,25 @@ public class CatKnight : MonoBehaviour {
         // Move
         if (!m_rolling )
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-
+            
+        if(m_body2d.velocity.x != 0)
+            isMoving = true;
+        else
+        {
+            isMoving = false;
+        }
+        if (isMoving)
+        {
+            if (!walkSFX.isPlaying)
+            {
+                walkSFX.Play();
+                Debug.Log("walksfx");
+            }
+        }
+        else
+        {
+            walkSFX.Stop();
+        }
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
