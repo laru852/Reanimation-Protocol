@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class HealthBar : MonoBehaviour
 {
+    public Image FillImage;
+    public float CurrentHealth;
 
-    public Slider slider;
-
-    public void SetMaxHealth(int health)
+    public void UpdateHP()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        FillImage.fillAmount = CurrentHealth / 100;
     }
 
-    public void SetHealth(int health)
-    {
-        slider.value = health;
-    }
 }

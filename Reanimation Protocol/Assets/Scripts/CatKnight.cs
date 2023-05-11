@@ -35,6 +35,8 @@ public class CatKnight : MonoBehaviour {
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
     private bool                isMoving;
+    public int currentHealth;
+    public int maxHealth = 100;  
    #endregion
 
 
@@ -45,6 +47,7 @@ public class CatKnight : MonoBehaviour {
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_CatKnight>();
         _jumpsLeft = maxJumps;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
