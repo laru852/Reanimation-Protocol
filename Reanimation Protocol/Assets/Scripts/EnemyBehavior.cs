@@ -15,8 +15,8 @@ public class EnemyBehavior : MonoBehaviour
     public Transform leftLimit;
     public Transform rightLimit;
     public Animator animator;
-    public int maxHealth = 100;
     public int currentHealth;
+    
     #endregion
 
     #region Private Variables
@@ -201,10 +201,9 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        Debug.Log("Ouch");
-
+        currentHealth -= damage;     
         animator.SetTrigger("Hurt");
+
 
         if(currentHealth <= 0)
         {
@@ -220,4 +219,5 @@ public class EnemyBehavior : MonoBehaviour
         Destroy(GetComponentInChildren<BoxCollider2D>());
 
     }
+    
 }
