@@ -9,7 +9,7 @@ public class Hit : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-    public int attackDamge = 40;
+    public int attackDamage = 40;
 
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class Hit : MonoBehaviour
             var enemy = enemyCollider.GetComponentInChildren<Enemy>();
             if(enemy != null)
             {
-                 enemy.TakeDamage(attackDamge);
+                 enemy.TakeDamage(attackDamage);
             }
         }
     }

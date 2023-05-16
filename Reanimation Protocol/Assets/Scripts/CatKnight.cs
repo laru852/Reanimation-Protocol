@@ -20,6 +20,8 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] private AudioSource walkSFX;
     #endregion
 
+    EnemyBehavior enemyBehavior;
+
     #region Public Values
     public Animator             m_animator;
     #endregion
@@ -35,8 +37,10 @@ public class CatKnight : MonoBehaviour {
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
     private bool                isMoving;
-    public int currentHealth;
-    public int maxHealth = 100;  
+    public int                  currentHealth;
+    public int                  enemyDamage = 15;
+    public int                  maxHealth = 100;
+    public Animator             animator;  
    #endregion
 
 
@@ -105,18 +109,7 @@ public class CatKnight : MonoBehaviour {
         {
             isMoving = false;
         }
-        if (isMoving)
-        {
-            if (!walkSFX.isPlaying)
-            {
-                walkSFX.Play();
-                Debug.Log("walksfx");
-            }
-        }
-        else
-        {
-            walkSFX.Stop();
-        }
+ 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
@@ -212,5 +205,25 @@ public class CatKnight : MonoBehaviour {
     {
         m_body2d.constraints = RigidbodyConstraints2D.None;
         m_body2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= enemyDamage;     
+        animator.SetTrigger("Hurt");
+
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+     void Die()
+    {
+        animator.SetBool("IsDead", true);
+        Destroy(gameObject, 2);
+        this.enabled = false;
+        GetComponentInChildren<BoxCollider2D>().enabled = false; 
+        Destroy(GetComponentInChildren<BoxCollider2D>());
+
     }
 }
