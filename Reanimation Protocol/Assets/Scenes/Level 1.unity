@@ -30197,7 +30197,7 @@ GameObject:
   - component: {fileID: 403688960}
   m_Layer: 6
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: attackPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35152,7 +35152,7 @@ GameObject:
   - component: {fileID: 1000053886}
   m_Layer: 9
   m_Name: enemy_sprites
-  m_TagString: Untagged
+  m_TagString: Sprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35321,7 +35321,7 @@ GameObject:
   - component: {fileID: 1072564944}
   m_Layer: 9
   m_Name: enemy_collider
-  m_TagString: Untagged
+  m_TagString: Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35618,6 +35618,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyDamage: 15
+  collider: {fileID: 0}
   playerScript: {fileID: 0}
   enemyScript: {fileID: 0}
 --- !u!95 &1232677003
@@ -37036,6 +37037,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enemyDamage: 15
+  collider: {fileID: 619120383}
   playerScript: {fileID: 1390845478}
   enemyScript: {fileID: 1485368696}
 --- !u!95 &1485368692
@@ -37538,7 +37540,7 @@ GameObject:
   - component: {fileID: 1837207551}
   m_Layer: 9
   m_Name: triggerArea
-  m_TagString: Untagged
+  m_TagString: detectArea
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37999,6 +38001,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyDamage: 15
+  collider: {fileID: 0}
   playerScript: {fileID: 0}
   enemyScript: {fileID: 0}
 --- !u!1 &2086948869

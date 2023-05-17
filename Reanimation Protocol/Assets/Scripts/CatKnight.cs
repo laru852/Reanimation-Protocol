@@ -228,8 +228,9 @@ public class CatKnight : MonoBehaviour {
     }
      void Die()
     {
+        m_body2d.gravityScale = 0;
         animator.SetTrigger("IsDead");
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 1);
         this.enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false; 
         Destroy(GetComponentInChildren<BoxCollider2D>());

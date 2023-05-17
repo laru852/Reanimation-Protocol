@@ -20,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask playerMask;
     public int enemyDamage = 15;
+    public new Collider2D collider;
     #endregion
 
     public CatKnight playerScript;
@@ -98,7 +99,13 @@ public class EnemyBehavior : MonoBehaviour
         }
          if (trig.gameObject.tag == "Player" && trig.GetComponent<CatKnight>())
             {
-                playerScript.currentHealth -= enemyScript.damage;
+                Debug.Log("In this bih");
+                if (trig.GetComponentInChildren<Collider2D>()!=null)
+                {
+                    playerScript.currentHealth -= enemyScript.damage;
+                    playerScript.animator.SetTrigger("Hurt");
+                    Debug.Log("Collider");
+                }
             }
     }
 
