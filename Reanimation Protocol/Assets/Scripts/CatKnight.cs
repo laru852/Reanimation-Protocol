@@ -40,8 +40,9 @@ public class CatKnight : MonoBehaviour {
     public int                  currentHealth;
     public int                  enemyDamage = 15;
     public int                  maxHealth = 100;
-    public Animator             animator;  
-   #endregion
+    public Animator             animator;
+    internal static GameObject instance;
+    #endregion
 
 
     // Use this for initialization
@@ -57,6 +58,14 @@ public class CatKnight : MonoBehaviour {
     // Update is called once per frame
         void Update ()
     {
+        //Death 
+        {
+            if (currentHealth <= 0)
+            {
+                Die();
+            } 
+        }
+
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
@@ -219,11 +228,10 @@ public class CatKnight : MonoBehaviour {
     }
      void Die()
     {
-        animator.SetBool("IsDead", true);
+        animator.SetTrigger("IsDead");
         Destroy(gameObject, 2);
         this.enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false; 
         Destroy(GetComponentInChildren<BoxCollider2D>());
-
     }
 }

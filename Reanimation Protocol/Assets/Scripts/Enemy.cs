@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public int maxHealth = 100;
     public int currentHealth;
+    public int damage = 10;
     #endregion
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         Invoke(nameof(pause), 1f);   
         animator.SetTrigger("Hurt");
 
+
         if(currentHealth <= 0)
         {
             Die();
@@ -43,7 +45,8 @@ public class Enemy : MonoBehaviour
     void pause()
         {
             Debug.Log("Freeze foo");
-            EnemyRigidBody.constraints = RigidbodyConstraints2D.FreezePosition;
+            EnemyRigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
+
         }
 
     void wait()
@@ -51,4 +54,6 @@ public class Enemy : MonoBehaviour
         Object.Destroy(this.gameObject);
         CancelInvoke();
     }
+
+    
 }

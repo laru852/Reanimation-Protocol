@@ -30210,7 +30210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403688959}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.93, y: 0.22, z: 4.246358}
+  m_LocalPosition: {x: 0.903, y: 0.3, z: 4.246358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30241,7 +30241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445858691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.92, y: -0.17, z: 0}
+  m_LocalPosition: {x: 15.12, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35587,6 +35587,7 @@ MonoBehaviour:
   animator: {fileID: 1232677003}
   maxHealth: 100
   currentHealth: 0
+  damage: 15
 --- !u!114 &1232677002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35611,12 +35612,14 @@ MonoBehaviour:
   rightLimit: {fileID: 1174048929}
   animator: {fileID: 1232677003}
   currentHealth: 0
-  attackPoint: {fileID: 0}
+  hitBox: {fileID: 0}
   attackRange: 0.5
   playerMask:
     serializedVersion: 2
     m_Bits: 0
   enemyDamage: 15
+  playerScript: {fileID: 0}
+  enemyScript: {fileID: 0}
 --- !u!95 &1232677003
 Animator:
   serializedVersion: 5
@@ -36759,6 +36762,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1390845478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 658861763642565726, guid: a82efb6871a2def4d8d280ce03cbd5d9, type: 3}
+  m_PrefabInstance: {fileID: 859614494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877361478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697f955d275b96f4cb2bc980af161261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411602074
 GameObject:
   m_ObjectHideFlags: 0
@@ -37016,12 +37030,14 @@ MonoBehaviour:
   rightLimit: {fileID: 445858692}
   animator: {fileID: 1485368692}
   currentHealth: 0
-  attackPoint: {fileID: 0}
+  hitBox: {fileID: 619120382}
   attackRange: 0.5
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   enemyDamage: 15
+  playerScript: {fileID: 1390845478}
+  enemyScript: {fileID: 1485368696}
 --- !u!95 &1485368692
 Animator:
   serializedVersion: 5
@@ -37151,6 +37167,7 @@ MonoBehaviour:
   animator: {fileID: 1485368692}
   maxHealth: 100
   currentHealth: 0
+  damage: 15
 --- !u!1 &1498986764
 GameObject:
   m_ObjectHideFlags: 0
@@ -37807,6 +37824,7 @@ MonoBehaviour:
   animator: {fileID: 1997952079}
   maxHealth: 100
   currentHealth: 0
+  damage: 15
 --- !u!50 &1997952077
 Rigidbody2D:
   serializedVersion: 4
@@ -37975,12 +37993,14 @@ MonoBehaviour:
   rightLimit: {fileID: 1174048929}
   animator: {fileID: 1997952079}
   currentHealth: 0
-  attackPoint: {fileID: 0}
+  hitBox: {fileID: 0}
   attackRange: 0.5
   playerMask:
     serializedVersion: 2
     m_Bits: 0
   enemyDamage: 15
+  playerScript: {fileID: 0}
+  enemyScript: {fileID: 0}
 --- !u!1 &2086948869
 GameObject:
   m_ObjectHideFlags: 0
@@ -38173,7 +38193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133091260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.35, y: -0.17, z: 0}
+  m_LocalPosition: {x: 7.6, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -16,11 +16,15 @@ public class EnemyBehavior : MonoBehaviour
     public Transform rightLimit;
     public Animator animator;
     public int currentHealth;
-    public Transform attackPoint;
+    public Transform hitBox;
     public float attackRange = 0.5f;
     public LayerMask playerMask;
     public int enemyDamage = 15;
     #endregion
+
+    public CatKnight playerScript;
+    public Enemy enemyScript;
+
 
     #region Private Variables
     private RaycastHit2D hit;
@@ -36,6 +40,9 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         GetComponentInChildren<BoxCollider2D>();
+        GetComponent<GameObject>();
+        enemyScript = FindObjectOfType<Enemy>();
+        playerScript = FindObjectOfType<CatKnight>();
     }
 
     void Awake()
@@ -89,6 +96,10 @@ public class EnemyBehavior : MonoBehaviour
             inRange = true;
             Flip();
         }
+         if (trig.gameObject.tag == "Player" && trig.GetComponent<CatKnight>())
+            {
+                playerScript.currentHealth -= enemyScript.damage;
+            }
     }
 
     void EnemyLogic()
@@ -122,18 +133,10 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+     
     void Attack()
-    {
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerMask);
+    {   
 
-        foreach(Collider2D playerCollider in hitPlayer)
-        {
-            var player = playerCollider.GetComponentInChildren<CatKnight>();
-            if(player != null)
-            {
-                player.TakeDamage(enemyDamage);
-            }
-        }
         Debug.Log("Out of hitPlayer");
         timer = intTimer; //Reset timer when player enter attack range 
         attackMode = true; //To check if Enemy can still attack or not
