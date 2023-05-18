@@ -11,5 +11,5 @@ public class HealthBar : MonoBehaviour
     {
         FillImage.fillAmount = CurrentHealth / 100;
     }
-
+ 
 }

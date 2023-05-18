@@ -21,7 +21,7 @@ public class CatKnight : MonoBehaviour {
     #endregion
 
     EnemyBehavior enemyBehavior;
-
+    HealthBar healthbar;
     #region Public Values
     public Animator             m_animator;
     #endregion

@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Invoke(nameof(pause), 1f);   
+        // Invoke(nameof(pause), 1f);   
         animator.SetTrigger("Hurt");
 
 
@@ -42,12 +42,12 @@ public class Enemy : MonoBehaviour
         Invoke(nameof(wait), 0.825f);
     }
     
-    void pause()
-        {
-            Debug.Log("Freeze foo");
-            EnemyRigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
+    // void pause()
+    //     {
+    //         Debug.Log("Freeze foo");
+    //         EnemyRigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        }
+    //     }
 
     void wait()
     {

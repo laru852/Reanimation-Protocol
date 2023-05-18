@@ -6,9 +6,6 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     #region Public Variables
-    public Transform rayCast;
-    public LayerMask raycastMask;
-    public float rayCastLength;
     public float attackDistance; 
     public float moveSpeed;
     public float timer;
@@ -21,6 +18,10 @@ public class EnemyBehavior : MonoBehaviour
     public LayerMask playerMask;
     public int enemyDamage = 15;
     public new Collider2D collider;
+    [HideInInspector] public Transform target;
+    [HideInInspector] public bool inRange;
+    public GameObject hotZone;
+    public GameObject triggerArea;
     #endregion
 
     public CatKnight playerScript;
@@ -29,11 +30,9 @@ public class EnemyBehavior : MonoBehaviour
 
     #region Private Variables
     private RaycastHit2D hit;
-    private Transform target;
     private Animator anim;
     private float distance; 
     private bool attackMode;
-    private bool inRange;
     private bool cooling;
     private float intTimer;
     #endregion
@@ -61,52 +60,15 @@ public class EnemyBehavior : MonoBehaviour
                 Move();
             }
 
-        if(inRange)
-        {
-            hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, raycastMask);
-            RaycastDebugger();
-        }
-
         if(!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             SelectTarget();
         }
 
-        //When player is detected
-        if(hit.collider != null)
+        if(inRange)
         {
             EnemyLogic();
         }
-        else if(hit.collider == null)
-        {
-            inRange = false;
-        }
-
-        if(inRange == false)
-        {
-            StopAttack();
-        }
-    }
-
-
-    void OnTriggerEnter2D(Collider2D trig) 
-    {
-        if(trig.gameObject.tag == "Player")
-        {
-            target = trig.transform;
-            inRange = true;
-            Flip();
-        }
-         if (trig.gameObject.tag == "Player" && trig.GetComponent<CatKnight>())
-            {
-                Debug.Log("In this bih");
-                if (trig.GetComponentInChildren<Collider2D>()!=null)
-                {
-                    playerScript.currentHealth -= enemyScript.damage;
-                    playerScript.animator.SetTrigger("Hurt");
-                    Debug.Log("Collider");
-                }
-            }
     }
 
     void EnemyLogic()
@@ -143,8 +105,6 @@ public class EnemyBehavior : MonoBehaviour
      
     void Attack()
     {   
-
-        Debug.Log("Out of hitPlayer");
         timer = intTimer; //Reset timer when player enter attack range 
         attackMode = true; //To check if Enemy can still attack or not
 
@@ -170,18 +130,6 @@ public class EnemyBehavior : MonoBehaviour
         attackMode = false;
         anim.SetBool("Attack", false);
     }
-    
-    void RaycastDebugger()
-    {
-        if(distance > attackDistance)
-        {
-            Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.red);
-        }
-        else if(attackDistance > distance)
-        {
-            Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.green);
-        }
-    }
 
     public void TriggerCooling()
     {
@@ -193,7 +141,7 @@ public class EnemyBehavior : MonoBehaviour
         return transform.position.x > leftLimit.position.x && transform.position.x < rightLimit.position.x;
     }
 
-    private void SelectTarget()
+    public void SelectTarget()
     {
         float distanceToLeft = Vector2.Distance(transform.position, leftLimit.position);
         float distanceToRight = Vector2.Distance(transform.position, rightLimit.position);
@@ -208,7 +156,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         Flip();
     }
-    private void Flip()
+    public void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
         if(transform.position.x > target.position.x)
@@ -241,7 +189,6 @@ public class EnemyBehavior : MonoBehaviour
         this.enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false; 
         Destroy(GetComponentInChildren<BoxCollider2D>());
-
     }
     
 }
