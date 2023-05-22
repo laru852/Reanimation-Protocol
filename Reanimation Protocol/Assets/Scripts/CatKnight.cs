@@ -24,10 +24,11 @@ public class CatKnight : MonoBehaviour {
     HealthBar healthbar;
     #region Public Values
     public Animator             m_animator;
+    public Collider2D           player_collider;
     #endregion
 
     #region Private Values
-    private Rigidbody2D         m_body2d;
+    public Rigidbody2D         m_body2d;
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
     private int                 _jumpsLeft;
@@ -226,7 +227,7 @@ public class CatKnight : MonoBehaviour {
             Die();
         }
     }
-     void Die()
+    public void Die()
     {
         m_body2d.gravityScale = 0;
         animator.SetTrigger("IsDead");
