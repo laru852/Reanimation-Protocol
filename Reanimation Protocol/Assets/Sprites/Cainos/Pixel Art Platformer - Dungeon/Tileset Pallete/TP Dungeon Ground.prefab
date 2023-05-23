@@ -2647,6 +2647,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 13, y: -14, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 222
+      m_TileSpriteIndex: 222
+      m_TileMatrixIndex: 1
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -3, y: -12, z: 0}
     second:
       serializedVersion: 2
@@ -7823,7 +7833,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b47c2e7035b28d14ebe81d2251b70bc0, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 077335b57725d424e87bb4e8b0169c19, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: f5a855f6f774a2848981ae248ed22499, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: cb9419ef5e1b67843b143e8f99d72681, type: 2}
@@ -9272,7 +9282,7 @@ Tilemap:
     m_Data: {fileID: 1087308666139765045, guid: 1061b915ffc9af143a59aa0d12c234dd, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 3338822201755497254, guid: 1061b915ffc9af143a59aa0d12c234dd, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: -3035283125206368197, guid: 1061b915ffc9af143a59aa0d12c234dd, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 9173931461199542921, guid: 1061b915ffc9af143a59aa0d12c234dd, type: 3}
@@ -10295,8 +10305,26 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: -0.99653554
+      e01: -0.0014264034
+      e02: 0.08320795
+      e03: 0
+      e10: -0.0014311754
+      e11: 0.999999
+      e12: 0.000002367531
+      e13: 0
+      e20: -0.08320772
+      e21: -0.000116724645
+      e22: -0.9965385
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_TileColorArray:
-  - m_RefCount: 729
+  - m_RefCount: 730
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -10371,7 +10399,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &5778604797924778595
+--- !u!114 &9150074915997211688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

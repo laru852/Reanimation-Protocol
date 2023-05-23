@@ -8,24 +8,27 @@ public class SpikeTrap : MonoBehaviour
 
     void Awake()
     {
-        player = GetComponent<CatKnight>();
+        player = GameObject.Find("CatKnight");
+        animator = player.GetComponent<Animator>();
+        particles = player.GetComponent<ParticleSystem>();
     }
 
  void Start ()
     {
-        GameObject.Find("m_body2d")
+        GameObject.Find("m_body2d");
     }
-
-    public CatKnight player;
-
+    public GameObject player;
+    public Animator animator;
+    public ParticleSystem particles;
     private void OnTriggerEnter2D(Collider2D trap)
     {
         if(trap.CompareTag("Player"))
         {
-            Debug.Log("One");
-            Destroy(trap.gameObject, 1f);
+            particles.Play();
+            player.GetComponent<CatKnight>().freezeMove();
             animator.SetTrigger("IsDead");
-            m_body2d.gravityScale = 0;
+            Destroy(trap.gameObject, 1f);
+            // m_body2d.gravityScale = 0;
         }
     }
 

@@ -25,6 +25,7 @@ public class CatKnight : MonoBehaviour {
     #region Public Values
     public Animator             m_animator;
     public Collider2D           player_collider;
+    public ParticleSystem       particles;
     #endregion
 
     #region Private Values
@@ -206,7 +207,7 @@ public class CatKnight : MonoBehaviour {
     }
     // Take damage
    
-    void freezeMove()
+    public void freezeMove()
     {
         m_body2d.constraints = RigidbodyConstraints2D.FreezePositionX;
     } 
