@@ -175,7 +175,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         currentHealth -= damage;     
         animator.SetTrigger("Hurt");
-
+        
 
         if(currentHealth <= 0)
         {

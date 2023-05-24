@@ -5,11 +5,21 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Image FillImage;
-    public float CurrentHealth;
-
-    public void UpdateHP()
+    public Slider slider;
+    public CatKnight player;
+    void Awake()
     {
-        FillImage.fillAmount = CurrentHealth / 100;
+
     }
- 
+
+    public void SetMaxHealth(int maxHealth)
+    {
+        slider.maxValue = player.maxHealth;
+        slider.value = player.currentHealth;
+    }
+
+    public void SetHealth(int currentHealth)
+    {
+        slider.value = player.currentHealth;
+    }
 }

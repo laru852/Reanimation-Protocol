@@ -19,17 +19,22 @@ public class CatKnight : MonoBehaviour {
     [SerializeField] private AudioSource deathSFX;
     [SerializeField] private AudioSource walkSFX;
     #endregion
-
+    #region References
     EnemyBehavior enemyBehavior;
     HealthBar healthbar;
+    #endregion
     #region Public Values
     public Animator             m_animator;
     public Collider2D           player_collider;
     public ParticleSystem       particles;
-    #endregion
-
-    #region Private Values
     public Rigidbody2D         m_body2d;
+    public int                  currentHealth;
+    public int                  enemyDamage = 20;
+    public int                  maxHealth = 100;
+    public Animator             animator;
+    public HealthBar            healthUI;
+    #endregion
+    #region Private Values
     private Sensor_CatKnight    m_groundSensor;
     private bool                m_grounded = false;
     private int                 _jumpsLeft;
@@ -39,10 +44,6 @@ public class CatKnight : MonoBehaviour {
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
     private bool                isMoving;
-    public int                  currentHealth;
-    public int                  enemyDamage = 15;
-    public int                  maxHealth = 100;
-    public Animator             animator;
     internal static GameObject instance;
     #endregion
 
@@ -55,6 +56,12 @@ public class CatKnight : MonoBehaviour {
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_CatKnight>();
         _jumpsLeft = maxJumps;
         currentHealth = maxHealth;
+        healthUI.SetMaxHealth(maxHealth);
+    }
+
+    void Awake()
+    {
+        particles = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -205,8 +212,7 @@ public class CatKnight : MonoBehaviour {
     {
         m_rolling = false;
     }
-    // Take damage
-   
+
     public void freezeMove()
     {
         m_body2d.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -221,16 +227,18 @@ public class CatKnight : MonoBehaviour {
     {
         currentHealth -= enemyDamage;     
         animator.SetTrigger("Hurt");
-
+        healthUI.SetHealth(currentHealth);
 
         if(currentHealth <= 0)
         {
             Die();
         }
+
     }
     public void Die()
     {
         m_body2d.gravityScale = 0;
+        particles.Play();
         animator.SetTrigger("IsDead");
         Destroy(gameObject, 1);
         this.enabled = false;
