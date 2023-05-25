@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CatKnight : MonoBehaviour {
 
@@ -244,5 +245,6 @@ public class CatKnight : MonoBehaviour {
         this.enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false; 
         Destroy(GetComponentInChildren<BoxCollider2D>());
+        SceneManager.LoadScene("GameOver");
     }
 }
