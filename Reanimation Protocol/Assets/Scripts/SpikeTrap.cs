@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SpikeTrap : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class SpikeTrap : MonoBehaviour
             player.GetComponent<CatKnight>().freezeMove();
             animator.SetTrigger("IsDead");
             Destroy(trap.gameObject, 1f);
+            SceneManager.LoadScene("GameOver");
             // m_body2d.gravityScale = 0;
         }
     }
